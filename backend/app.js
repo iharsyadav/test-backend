@@ -12,13 +12,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// // MongoDB connection
-// mongoose.connect("mongodb://127.0.0.1:27017/carDB")
-
-//   .then(() => console.log("MongoDB connected"))
-//   .catch(err => console.log(err));
-
-// GET cars
 app.get("/cars", async (req, res) => {
   try {
     const cars = await Car.find();
@@ -28,4 +21,4 @@ app.get("/cars", async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
-app.listen(5000, () => console.log("Server running on 5000"));
+app.listen(process.env.PORT ||5000, () => console.log("Server running on 5000"));

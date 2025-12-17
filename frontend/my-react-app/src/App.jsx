@@ -4,13 +4,12 @@ import "./App.css";
 
 function App() {
   const [cars, setCars] = useState([]);
-
   useEffect(() => {
-    fetch("http://localhost:5000/cars")
+      const API = import.meta.env.VITE_API_URL;
+    fetch(`${API}/cars`)
       .then(res => res.json())
       .then(data => setCars(data));
   }, []);
-
   return (
     <div className="container">
       <h1>Car Collection</h1>
